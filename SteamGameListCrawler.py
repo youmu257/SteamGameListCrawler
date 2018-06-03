@@ -103,7 +103,7 @@ def main():
         steamSearchGameList = urllib.request.urlopen('https://store.steampowered.com/search/?specials=1&page=' + str(pages))
         soup = BeautifulSoup(steamSearchGameList, 'html.parser')
         
-        if setting.getMaxPages:
+        if pages == 1 and setting.getMaxPages:
             setting.maxPages = getMaxPage(soup)
     
         # extract game list
