@@ -11,14 +11,15 @@ If you want run this project, the requirements are as follows:
 
 ## Usage
 If you want write data to database, you need to change the login information of database/config.ini
-Then, jsut run the command like ```python SteamGameListCrawler.py --page 1 --json --db```
+Then, jsut run the command like: ```python SteamGameListCrawler.py --page 1 --json --db```
 
 Parameter:
-| parameter                   | comment                                                                                 |
-| ----------------------------|-----------------------------------------------------------------------------------------|
-| --page start_page (end_page)| setting search start page and end page. It will search total page if not input end page.| 
-| --json                      | save result as a json file named result.json                                            |
-| --db                        | save result into database.                                                              |
+
+| parameter                     | comment                                                                                 |
+| ------------------------------|-----------------------------------------------------------------------------------------|
+| "--page start_page (end_page)"| setting search start page and end page. It will search total page if not input end page | 
+| "--json"                      | save result as a json file named result.json                                            |
+| "--db"                        | save result into database                                                               |
 
 ## Database Schema
 
