@@ -1,6 +1,11 @@
 # encoding=utf-8
-import configparser, os, inspect, sys, pymysql
+import configparser
+import os
+import inspect
+import sys
+import pymysql
 sys.path.append(os.path.abspath(os.getcwd() + '/database'))
+
 
 # from https://wiki.python.org/moin/ConfigParserExamples
 def ConfigSectionMap(section, config):
@@ -11,22 +16,26 @@ def ConfigSectionMap(section, config):
             dict1[option] = config.get(section, option)
             if dict1[option] == -1:
                 print("skip: %s" % option)
-        except:
+        except Exception:
             print("exception on %s!" % option)
             dict1[option] = None
     return dict1
 
+
 def connectMysql():
     config = configparser.ConfigParser()
-    dbDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    dbDir = os.path.dirname(
+        os.path.abspath(inspect.getfile(inspect.currentframe()))
+    )
     config.read(dbDir + '/config.ini')
-    
+
     ConfigMap = ConfigSectionMap('DB', config)
     mHost = str(ConfigMap['host'])
     mPort = int(ConfigMap['port'])
     mUser = str(ConfigMap['user'])
     mPasswd = str(ConfigMap['passwd'])
     mDb = str(ConfigMap['db'])
-    
-    conn = pymysql.connect(host = mHost, port = mPort, user = mUser, passwd = mPasswd, db = mDb, charset = 'UTF8')
+
+    conn = pymysql.connect(host=mHost, port=mPort, user=mUser,
+                           passwd=mPasswd, db=mDb, charset='UTF8')
     return conn
